@@ -1,0 +1,25 @@
+{
+    "name": "jeffward01.generate-html",
+    "title": "Generate HTML",
+    "description": "Generates HTML files with chosen doctype and libraries",
+  "homepage": "https://github.com/jeffward01/jeffward01.HTML-Templates-Brackets-Extension",
+    "version": "0.0.5",
+    "author": "Jeff Ward",
+    "i18n": [
+        "en",
+        "it",
+        "es",
+        "de",
+        "fr",
+        "zh-cn"
+    ],
+    "engines": {
+        "brackets": ">=1.0.0"
+    },
+    "package-i18n": {
+        "zh-cn": {
+          "description": "生成的HTML文件，选择文档类型和库",
+          "title": "生成HTML"
+        }
+    }
+}

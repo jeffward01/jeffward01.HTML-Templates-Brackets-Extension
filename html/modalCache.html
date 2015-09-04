@@ -1,0 +1,36 @@
+<div id='templates_modal' class='template modal'>
+  <div class='modal-header'>
+    <button type='button' class='close' data-dismiss='modal'><span aria-hidden='true'>&times;</span></button>
+    <h1 class='dialog-title'>{{TITLE_H1}}</h1>
+  </div>
+  <p style='display: none; color: red; font-weight: bold; padding: 10px;' id='templates_error'>{{NO_FILE_OPEN_ERROR}}</p>
+  <div class='modal-body'>
+    <h4>{{TITLE_H4}}</h4>
+    <p style='display: none; color: red; font-weight: bold;' id='templates_warning'>{{CONTENT_ERROR}}</p>
+
+    <p><strong>{{SECTION_DOCTYPE}}</strong></p>
+    <select id='standard'>
+      <option value=''>{{SELECT_LABEL}}</option>
+      <option value='html5'>HTML5</option>
+      <option value='html4loose'>HTML4 Transitional</option>
+      <option value='html4strict'>HTML4 Strict</option>
+      <option value='xhtml1loose'>XHTML 1 Transitional</option>
+      <option value='xhtml1strict'>XHTML 1 Strict</option>
+      <option value='xhtml11'>XHTML 1.1</option>
+    </select>
+
+    <p><strong>{{SECTION_TEMPLATES}}</strong></p>
+    <p>{{SECTION_TEMPLATES_DESC}}</p>
+    <select id='frameworks'>
+      <option value=''>{{SELECT_LABEL}}</option>
+      <option value='bootstrap-3-3-2'>Bootstrap 3.3.2</option>
+      <option value='html5bp-5-2-0'>HTML5 Boilerplate 5.2.0</option>
+      <option value='foundation-5-5-1'>Foundation 5.5.1</option>
+      <option value='skeleton-2-0-2'>Skeleton 2.02</option>
+      <option value='materialize-0-95-1'>Materialize 0.95.1</option>
+    </select>
+  </div>
+  <div class='modal-footer'>
+    <a id='templates_modalBtn' href='#' class='dialog-button btn btn-danger' data-dismiss='modal'>{{CANCEL_BUTTON}}</a>
+  </div>
+</div>
