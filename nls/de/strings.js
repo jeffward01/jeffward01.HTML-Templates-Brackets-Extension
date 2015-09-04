@@ -26,6 +26,10 @@
 define({
     'MENU_COMMAND': 'Generieren Sie HTML- Datei...',
     'TITLE_H1': 'HTML -Einstellungen',
+    'LANGUAGE_SELECTION' : '1.) Select your language tag',
+    'LANGUAGE_DESCRIPTION': 'Unterstützte Sprachen:',
+    'CHARSET_SELECTION': '2.) Wählen Sie ein charset -Tag',
+    'CHARSET_DESCRIPTION':'Erhältlich charset ist:',
     'NO_FILE_OPEN_ERROR': 'Es existiert keine Datei geöffnet ist. Bitte öffnen Sie eine Datei vor dem Ausführen Generieren - HTML.',
     'TITLE_H4': '1.) Wählen Sie eine DOCTYPE',
     'CONTENT_ERROR': 'Datei Inhalt , wird diese Aktion, die Inhalte zu überschreiben.',

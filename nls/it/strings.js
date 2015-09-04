@@ -26,12 +26,16 @@
 define({
     'MENU_COMMAND': 'Genera file HTML ...
     'TITLE_H1': 'Impostazioni HTML',
+    'LANGUAGE_SELECTION' : '1.) Seleziona la tua lingua etichetta',
+    'LANGUAGE_DESCRIPTION': 'Lingue supportate:',
+    'CHARSET_SELECTION': '2.) Seleziona il tuo tag charset',
+    'CHARSET_DESCRIPTION':'Di charset disponibili:',
     'NO_FILE_OPEN_ERROR': 'Non vi è alcun file aperto . Si prega di aprire un file prima di eseguire Genera - HTML.',
-    'TITLE_H4': '1.) Scegliere un DOCTYPE',
+    'TITLE_H4': '3.) Scegliere un DOCTYPE',
     'CONTENT_ERROR': 'File ha un contenuto, questa azione sovrascrive il contenuto.',
     'SECTION_DOCTYPE': 'Standard DOCTYPES:',
     'SELECT_LABEL': 'Scegli...',
-    'SECTION_TEMPLATES': '2.) Scegliere le librerie che si desidera utilizzare',
+    'SECTION_TEMPLATES': '4.) Scegliere le librerie che si desidera utilizzare',
     'SECTION_TEMPLATES_DESC': 'Queste librerie sono ospitati su Google CDN',
     'GENERATE_BUTTON': 'Genera HTML',
     'CANCEL_BUTTON': 'Cancella'

@@ -26,12 +26,16 @@
 define({
     'MENU_COMMAND': 'Generar archivo HTML ...',
     'TITLE_H1': 'Configuración de HTML',
+    'LANGUAGE_SELECTION' : '1.) Seleccione la etiqueta de idioma',
+    'LANGUAGE_DESCRIPTION': 'Idiomas soportados:',
+    'CHARSET_SELECTION': '2.) Seleccione su etiqueta charset',
+    'CHARSET_DESCRIPTION':'De juego de caracteres disponibles:',
     'NO_FILE_OPEN_ERROR': 'No hay ningún archivo abierto. Por favor, abra un archivo antes de ejecutar Plantillas HTML.',
-    'TITLE_H4': '1. ) Escoge un DOCTYPE',
+    'TITLE_H4': '3. ) Escoge un DOCTYPE',
     'CONTENT_ERROR': 'El archivo ya tiene contenido, esta acción sobreescribirá el contenido existente.',
     'SECTION_DOCTYPE': 'DOCTYPES estándar:',
     'SELECT_LABEL': 'Elegir...',
-    'SECTION_TEMPLATES': '2. ) Elija las bibliotecas que desea utilizar',
+    'SECTION_TEMPLATES': '4. ) Elija las bibliotecas que desea utilizar',
     'SECTION_TEMPLATES_DESC': 'Estas bibliotecas están alojados en Google CDN',
     'GENERATE_BUTTON': 'generar HTML',
     'CANCEL_BUTTON': 'Cancelar'

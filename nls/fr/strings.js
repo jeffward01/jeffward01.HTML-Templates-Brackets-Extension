@@ -26,12 +26,16 @@
 define({
   'MENU_COMMAND': 'Générer un fichier HTML ...',
   'TITLE_H1': 'Réglages HTML',
+  'LANGUAGE_SELECTION' : '1.) Sélectionnez votre étiquette de langue',
+  'LANGUAGE_DESCRIPTION': 'Langues prises en charge:',
+  'CHARSET_SELECTION': '2.) Sélectionnez votre balise charset',
+  'CHARSET_DESCRIPTION':'\'S Charset disponibles:',
   'NO_FILE_OPEN_ERROR': 'Il n\'y a pas d\'ouvrir le fichier . S\'il vous plaît ouvrir un fichier avant de lancer Generate HTML .',
-  'TITLE_H4': '1. ) Choisissez un DOCTYPE',
+  'TITLE_H4': '3. ) Choisissez un DOCTYPE',
   'CONTENT_ERROR': 'Fichier a un contenu , cette action va écraser ce contenu.',
   'SECTION_DOCTYPE': 'DOCTYPES standard:',
   'SELECT_LABEL': 'Choose...',
-  'SECTION_TEMPLATES': '2. ) Choisissez les bibliothèques que vous souhaitez utiliser',
+  'SECTION_TEMPLATES': '4. ) Choisissez les bibliothèques que vous souhaitez utiliser',
   'SECTION_TEMPLATES_DESC': 'Ces bibliothèques sont hébergées sur Google CDN',
   'GENERATE_BUTTON': 'générer HTML',
   'CANCEL_BUTTON': 'Cancel'

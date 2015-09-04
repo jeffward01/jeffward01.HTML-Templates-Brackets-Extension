@@ -26,12 +26,16 @@
 define({
     'MENU_COMMAND': '生成HTML文件...',
     'TITLE_H1': 'HTML设置',
+    'LANGUAGE_SELECTION' : '1.)选择你的语言标记',
+    'LANGUAGE_DESCRIPTION': '支持的语言:',
+    'CHARSET_SELECTION': '2.) 选择您的字符集的标签',
+    'CHARSET_DESCRIPTION':'可用字符集的:',
     'NO_FILE_OPEN_ERROR': '没有打开的文件。请运行生成HTML的前打开一个文件。',
-    'TITLE_H4': '1 ）选择一个DOCTYPE',
+    'TITLE_H4': '3.）选择一个DOCTYPE',
     'CONTENT_ERROR': '文件的内容，这一行动将覆盖这些内容。',
     'SECTION_DOCTYPE': '标准DOCTYPES ：',
     'SELECT_LABEL': '选择...',
-    'SECTION_TEMPLATES': '2 ）选择您希望使用的图书馆“',
+    'SECTION_TEMPLATES': '4.）选择您希望使用的图书馆“',
     'SECTION_TEMPLATES_DESC': '这些库被托管在谷歌CDN',
     'GENERATE_BUTTON': '生成HTML',
     'CANCEL_BUTTON': '取消'
