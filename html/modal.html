@@ -33,7 +33,7 @@
   fieldset{
     overflow: hidden;
   }
-  .modal-libraries, .modal-doctype{
+  .modal-libraries, .modal-doctype, .modal-languages, .modal-charset{
     float: left;
     clear: none;
   }
@@ -42,10 +42,12 @@
     clear:none;
     display:block;
     padding: 2px 1em 0 0;
+    margin-left: 5px;
   }
-  input[type=radio], input.radio, input[type=checkbox], input.checkbox {
+  input[type="radio"], input.radio, input[type="checkbox"], input.checkbox {
     float:left;
     clear:none;
+    margin-right: 5px;
     margin: 6px 0 0 6px;
   }
 </style>
@@ -56,12 +58,43 @@
     <button type='button' class='close' data-dismiss='modal'><span aria-hidden='true'>&times;</span></button>
     <h1 class='dialog-title'>{{TITLE_H1}}</h1>
   </div>
+  <p style='display: none; color: red; font-weight: bold;' id='templates_warning'>{{CONTENT_ERROR}}</p>
   <p style='display: none; color: red; font-weight: bold; padding: 10px;' id='templates_error'>{{NO_FILE_OPEN_ERROR}}</p>
   <div class='modal-body'>
+    <h4>{{LANGUAGE_SELECTION}}</h4>
+    <div class="modal-languages">
+      <p>{{LANGUAGE_DESCRIPTION}}</p>
+      <fieldset>
+        <ul class="radio-grid item" id="languages">
+          <li><input type="radio" value="english" /><label for="english"> en </label></li>
+          <li><input type="radio" value="german" /><label for="german"> de </label></li>
+          <li><input type="radio" value="spanish" /><label for="spanish"> es </label></li>
+          <li><input type="radio" value="french" /><label for="french"> fr </label></li>
+          <li><input type="radio" value="italian" /><label for="italian"> it </label></li>
+          <li><input type="radio"  value="chinese" /><label for="chinese"> zh-cn </label></li>
+        </ul>
+      </fieldset>
+    </div>
+
+
+    <h4>{{CHARSET_SELECTION}}</h4>
+    <div class="modal-charset">
+      <p>{{CHARSET_DESCRIPTION}}</p>
+      <fieldset>
+        <ul class="radio-grid item" id="languages">
+          <li><input type="radio" value="utf8" /><label for="utf8"> UTF-8 </label></li>
+          <li><input type="radio" value="utf16" /><label for="utf16"> UTF-16 </label></li>
+        </ul>
+      </fieldset>
+    </div>
+
+
+
+
+
     <h4>{{TITLE_H4}}</h4>
-    <p style='display: none; color: red; font-weight: bold;' id='templates_warning'>{{CONTENT_ERROR}}</p>
     <div class="modal-doctype">
-      <p><strong>{{SECTION_DOCTYPE}}</strong></p>
+      <p>{{SECTION_DOCTYPE}}</p>
       <fieldset>
         <ul class="radio-grid item" id="doctype">
           <li><input type="radio" value="html5" /><label for="html5">HTML5</label></li>
