@@ -32,7 +32,7 @@ define({
   'CHARSET_DESCRIPTION':'Available charset\'s:',
   'NO_FILE_OPEN_ERROR': 'There is no file open. Please open a file before running Generate-HTML.',
   'TITLE_H4': '3.) Select a DOCTYPE',
-  'DOCTYPE_ALERT': 'Currently only HTML5 is supported.'
+  'DOCTYPE_ALERT': 'Currently only HTML5 is supported.',
   'CONTENT_ERROR': 'File has content, this action will overwrite that content.',
   'SECTION_DOCTYPE': 'Standard DOCTYPES:',
   'SELECT_LABEL': 'Choose...',
