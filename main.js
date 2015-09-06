@@ -159,15 +159,6 @@ define(function (require, exports, module) {
       $('#templates_modalBtn').click();
     }
 
-
-
-
-
-
-
-
-
-
     //Get checkedBoxes function
     // Pass the checkbox name to the function
     function getCheckedBoxes(chkboxName) {
@@ -185,63 +176,7 @@ define(function (require, exports, module) {
     }
 
 
-
-
-
-
-
-    //Below this is old code
-    var chosenTemplate = function (cho_ice) {
-      // grab the html to be inserted into file
-      var template;
-      switch (cho_ice) {
-        // standard
-        case 'html5':
-          template = require('text!html/html5.html');
-          break;
-        case 'html4loose':
-          template = require('text!html/html4loose.html');
-          break;
-        case 'html4strict':
-          template = require('text!html/html4strict.html');
-          break;
-        case 'xhtml1loose':
-          template = require('text!html/xhtml1loose.html');
-          break;
-        case 'xhtml1strict':
-          template = require('text!html/xhtml1strict.html');
-          break;
-        case 'xhtml11':
-          template = require('text!html/xhtml11.html');
-          break;
-          // frameworks
-        case 'html5bp-5-2-0':
-          template = require('text!html/html5bp-5-2-0.html');
-          break;
-        case 'foundation-5-5-1':
-          template = require('text!html/foundation-5-5-1.html');
-          break;
-        case 'skeleton-2-0-2':
-          template = require('text!html/skeleton-2-0-2.html');
-          break;
-        case 'bootstrap-3-3-2':
-          template = require('text!html/bootstrap-3-3-2.html');
-          break;
-        case 'materialize-0-95-1':
-          template = require('text!html/materialize-0-95-1.html');
-          break;
-        default:
-          template = 'Something went wrong somewhere. Not horribly wrong, just wrong.';
-      }
-
-      // insert html into file, this will overwrite whatever content happens to be there already
-      EditorManager.getCurrentFullEditor()._codeMirror.setValue(template);
-
-      // automatically close the modal window
-      $('#templates_modalBtn').click();
-    };
-
-  }
+  } // End action();
 
   //JEFF STOP CODING HERE
 
@@ -251,4 +186,4 @@ define(function (require, exports, module) {
   menu.addMenuDivider();
   menu.addMenuItem('templates');
 
-});
+}); //end define;
