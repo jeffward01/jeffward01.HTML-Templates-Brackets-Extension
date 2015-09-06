@@ -44,6 +44,19 @@ define(function (require, exports, module) {
   var modal = require('text!html/modal.html');
   var Strings = require('strings');
 
+  //Define Libraries Scripts
+
+  //  var lib_angular = document.getElementById('angularjs').value;
+  //  var lib_angularMaterial = document.getElementById('angularmaterial').value;
+  //  var lib_dojo = document.getElementById('dojo').value;
+  //  var lib_extcore = document.getElementById('extcore').value;
+  //  var lib_jquery111 = document.getElementById('jquery111').value;
+  //  var lib_jquery214 = document.getElementById('jquery214').value;
+  //  var lib_jquerymobile = document.getElementById('lib_jquerymobile').value;
+  //
+
+
+
   //Edit > Generate HTML... is selected 'clicked'
   function action() {
 
@@ -66,7 +79,7 @@ define(function (require, exports, module) {
     //JEFF START CODING BELOW
 
 
-    //
+
 
     // result of clicking a template choice
     // selector is very specific to avoid cross-extension contamination, just in case
@@ -77,16 +90,7 @@ define(function (require, exports, module) {
     }); //End on-Click
 
 
-
-    // 1.) Define varibles from Modal Prompt
-    // - Grab Language Tags
-    // - Grab Charset Tags
-    // - Grab HTML doctypes
-    // - Grab Script Libraries
-    // -- -- Put Script Libraires into Array
-
-    // 1B.)
-
+    //Declare choice.  Choice = user's selection from Modal.
     var choice = new Object();
 
     choice.language = function () {
@@ -117,31 +121,76 @@ define(function (require, exports, module) {
       } //end choice.language
 
     choice.charset = function () {
-      //Build meta and the rest of the 'head tag'
-      var htmlCharset_Beginning = "<meta charset='";
-      var htmlCharset_End = "'>" + "<title> -Insert Title- </title>" + "<!-- Insert CSS links below -->" + "</head>";
-      var charsetChoice = document.getElementById("charset").value;
-      if (charsetChoice === "utf8") {
-        charsetChoice = "UTF-8";
-        return htmlCharset_Beginning + charsetChoice + htmlCharset_End;
-      } else {
-        charsetChoice = "UTF-16";
-        return htmlCharset_Beginning + charsetChoice + htmlCharset_End;
-      }
-    } // end choice.charset
+        //Build meta and the rest of the 'head tag'
+        var htmlCharset_Beginning = "<meta charset='";
+        var htmlCharset_End = "'>" + "<title> -Insert Title- </title>" + "<!-- Insert CSS links below -->" + "</head>" + "<body>";
+        var charsetChoice = document.getElementById("charset").value;
+        if (charsetChoice === "utf8") {
+          charsetChoice = "UTF-8";
+          return htmlCharset_Beginning + charsetChoice + htmlCharset_End;
+        } else {
+          charsetChoice = "UTF-16";
+          return htmlCharset_Beginning + charsetChoice + htmlCharset_End;
+        }
+      } // end choice.charset
 
-    choice.doctype = function(){
-    var doctypeChoice = document.getElementById("doctype").value;
+    choice.doctype = function () {
+      var doctypeChoice = document.getElementById("doctype").value;
       return doctypeChoice;
     }
-    choice.libraries = function(){
+    choice.libraries = function () {
+      var checkedBoxes = getCheckedBoxes("lib_checkboxes");
+      checkedBoxes.forEach(function(item){
+      var scripts += $(item).data('script') + '\n';
+      var bottomHTML = scripts + "</body>" + "</html>";
+        return bottomHTML;
+      });//End forEach
+
+    } //End choice.libraries
 
 
+    var chosenTemplate = function(){
+    var template = choice.language() + choice.charset() + choice.libraries();
+
+      // insert html into file, this will overwrite whatever content happens to be there already
+      EditorManager.getCurrentFullEditor()._codeMirror.setValue(template);
+
+      // automatically close the modal window
+      $('#templates_modalBtn').click();
     }
 
 
 
 
+
+
+
+
+
+
+    //Get checkedBoxes function
+    // Pass the checkbox name to the function
+    function getCheckedBoxes(chkboxName) {
+      var checkboxes = document.getElementsByName(chkboxName);
+      var checkboxesChecked = [];
+      // loop over them all
+      for (var i = 0; i < checkboxes.length; i++) {
+        // And stick the checked ones onto an array...
+        if (checkboxes[i].checked) {
+          checkboxesChecked.push(checkboxes[i]);
+        }
+      }
+      // Return the array if it is non-empty, or null
+      return checkboxesChecked.length > 0 ? checkboxesChecked : null;
+    }
+
+
+
+
+
+
+
+    //Below this is old code
     var chosenTemplate = function (cho_ice) {
       // grab the html to be inserted into file
       var template;
