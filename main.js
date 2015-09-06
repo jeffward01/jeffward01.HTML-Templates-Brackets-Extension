@@ -118,7 +118,7 @@ define(function (require, exports, module) {
           languageChoice = "zh-cn";
           return htmlTop + languageChoice + "'>";
         }
-      } //end choice.language
+      }; //end choice.language
 
     choice.charset = function () {
         //Build meta and the rest of the 'head tag'
@@ -132,21 +132,22 @@ define(function (require, exports, module) {
           charsetChoice = "UTF-16";
           return htmlCharset_Beginning + charsetChoice + htmlCharset_End;
         }
-      } // end choice.charset
+      }; // end choice.charset
 
     choice.doctype = function () {
       var doctypeChoice = document.getElementById("doctype").value;
       return doctypeChoice;
-    }
+    }; // end doctype
+
     choice.libraries = function () {
       var checkedBoxes = getCheckedBoxes("lib_checkboxes");
       checkedBoxes.forEach(function(item){
-      var scripts += $(item).data('script') + '\n';
+      var scripts += $(item).data('script');
       var bottomHTML = scripts + "</body>" + "</html>";
         return bottomHTML;
       });//End forEach
 
-    } //End choice.libraries
+    }; //End choice.libraries
 
 
     var chosenTemplate = function(){
@@ -157,7 +158,7 @@ define(function (require, exports, module) {
 
       // automatically close the modal window
       $('#templates_modalBtn').click();
-    }
+    };
 
     //Get checkedBoxes function
     // Pass the checkbox name to the function
