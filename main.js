@@ -76,18 +76,33 @@ define(function (require, exports, module) {
       $('#templates_error').show();
     }
 
-    //JEFF START CODING BELOW
+  }; //end action();
 
-
-
-
-    // result of clicking a template choice
-    // selector is very specific to avoid cross-extension contamination, just in case
+    // result of clicking a generate button
+    //click handler
     $('#generate_html_button').on('click', function () {
-
+          console.log('you clicked generate');
       // send the chosen template
       chosenTemplate($(this).val());
+      console.log(chosenTemplate);
+      console.log(choice.language());
+      console.log(choice.charset());
+      console.log(choice.libraries());
+
     }); //End on-Click
+
+
+    var chosenTemplate = function(){
+      var template = choice.language() + choice.charset() + choice.libraries();
+
+      // insert html into file, this will overwrite whatever content happens to be there already
+      EditorManager.getCurrentFullEditor()._codeMirror.setValue(template);
+
+      // automatically close the modal window
+//      $('#templates_modalBtn').click();
+    };
+
+
 
 
     //Declare choice.  Choice = user's selection from Modal.
@@ -141,24 +156,18 @@ define(function (require, exports, module) {
 
     choice.libraries = function () {
       var checkedBoxes = getCheckedBoxes("lib_checkboxes");
+      var scripts;
+      console.log(checkedBoxes);
       checkedBoxes.forEach(function(item){
-      var scripts =+ $(item).data('script');
-      var bottomHTML = scripts + "</body>" + "</html>";
-        return bottomHTML;
-      });//End forEach
+      scripts += $(item).data('script');
 
+      });//End forEach
+      var bottomHTML = scripts + "</body>" + "</html>";
+      return bottomHTML;
     }; //End choice.libraries
 
 
-    var chosenTemplate = function(){
-    var template = choice.language() + choice.charset() + choice.libraries();
 
-      // insert html into file, this will overwrite whatever content happens to be there already
-      EditorManager.getCurrentFullEditor()._codeMirror.setValue(template);
-
-      // automatically close the modal window
-      $('#templates_modalBtn').click();
-    };
 
     //Get checkedBoxes function
     // Pass the checkbox name to the function
@@ -177,9 +186,6 @@ define(function (require, exports, module) {
     }
 
 
-  } // End action();
-
-  //JEFF STOP CODING HERE
 
   // Register the commands and insert in the File menu
   CommandManager.register(Strings.MENU_COMMAND, 'templates', action);
@@ -188,3 +194,5 @@ define(function (require, exports, module) {
   menu.addMenuItem('templates');
 
 }); //end define;
+
+
