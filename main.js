@@ -142,7 +142,7 @@ define(function (require, exports, module) {
     choice.libraries = function () {
       var checkedBoxes = getCheckedBoxes("lib_checkboxes");
       checkedBoxes.forEach(function(item){
-      var scripts += $(item).data('script');
+      var scripts =+ $(item).data('script');
       var bottomHTML = scripts + "</body>" + "</html>";
         return bottomHTML;
       });//End forEach
