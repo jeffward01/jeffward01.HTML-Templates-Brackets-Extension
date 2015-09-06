@@ -60,6 +60,9 @@ define(function (require, exports, module) {
   //Edit > Generate HTML... is selected 'clicked'
   function action() {
 
+    //Test to see if action() is run
+    console.log("Action!");
+
     //Show Modal
     Dialogs.showModalDialogUsingTemplate(Mustache.render(modal, Strings));
 
