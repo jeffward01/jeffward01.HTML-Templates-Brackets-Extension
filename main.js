@@ -36,13 +36,13 @@ define(function (require, exports, module) {
   'use strict';
 
   var CommandManager = brackets.getModule('command/CommandManager'),
-    EditorManager = brackets.getModule('editor/EditorManager'),
-    Menus = brackets.getModule('command/Menus'),
-    Dialogs = brackets.getModule('widgets/Dialogs');
+      EditorManager = brackets.getModule('editor/EditorManager'),
+      Menus = brackets.getModule('command/Menus'),
+      Dialogs = brackets.getModule('widgets/Dialogs');
 
   // load up modal content, don't forget text! at beginning of file name
-  var modal = require('text!html/modal.html');
-  var Strings = require('strings');
+  var modal = require('text!html/modal.html'),
+      Strings = require('strings');
 
   //Define Libraries Scripts
 
@@ -53,93 +53,47 @@ define(function (require, exports, module) {
   //  var lib_jquery111 = document.getElementById('jquery111').value;
   //  var lib_jquery214 = document.getElementById('jquery214').value;
   //  var lib_jquerymobile = document.getElementById('lib_jquerymobile').value;
-  //
 
+  function generateHtml() {
 
+    // Template builder is a module that is solely responsible for building templates based on user input.
+    var templateBuilder = function () {
 
-  //Edit > Generate HTML... is selected 'clicked'
-  function action() {
+      // Private: Gets checked boxes from the UI
+      function getCheckedBoxes(checkboxName) {
+        var checkboxes = document.getElementsByName(checkboxName);
 
-    //Test to see if action() is run
-    console.log("Action!");
+        var checkedBoxes = checkboxes.map(function (checkbox) {
+          return checkbox.checked;
+        });
 
-    //Show Modal
-    Dialogs.showModalDialogUsingTemplate(Mustache.render(modal, Strings));
-
-    //Valdation to see State of main UI
-    var editor = EditorManager.getCurrentFullEditor();
-    if (editor) {
-      //Checks main UI to see if there is content on open page/file
-      if (editor._codeMirror.getValue().length > 0) {
-        // file has content, show warning
-        $('#templates_warning').show();
+        return checkedBoxes.length > 0 ? checkedBoxes : null;
       }
-    } else {
-      // no file is open, show error
-      $('#templates_error').show();
-    }
 
-  }; //end action();
+      // Private: Creates language section based on user input
+      function getLanguageTag() {
+        var htmlTop = "<!DOCTYPE html><html><head lang='";
 
-    // result of clicking a generate button
-    //click handler
-    $('#generate_html_button').on('click', function () {
-          console.log('you clicked generate');
-      // send the chosen template
-      chosenTemplate($(this).val());
-      console.log(chosenTemplate);
-      console.log(choice.language());
-      console.log(choice.charset());
-      console.log(choice.libraries());
-
-    }); //End on-Click
-
-
-    var chosenTemplate = function(){
-      var template = choice.language() + choice.charset() + choice.libraries();
-
-      // insert html into file, this will overwrite whatever content happens to be there already
-      EditorManager.getCurrentFullEditor()._codeMirror.setValue(template);
-
-      // automatically close the modal window
-//      $('#templates_modalBtn').click();
-    };
-
-
-
-
-    //Declare choice.  Choice = user's selection from Modal.
-    var choice = new Object();
-
-    choice.language = function () {
-        //Buid HTML top 'head'
-        var htmlTop = "<!DOCTYPE html>" + "<html>" + "<head lang='";
-        //Grab Selected Language Type
         var languageChoice = document.getElementById("languages").value;
-        //Determine what Selected Language type is and complete HTML 'head'
-        if (languageChoice === "english") {
-          languageChoice = "en";
-          return htmlTop + languageChoice + "'>";
-        } else if (languageChoice === "german") {
-          languageChoice = "de";
-          return htmlTop + languageChoice + "'>";
-        } else if (languageChoice === "spanish") {
-          languageChoice = "es";
-          return htmlTop + languageChoice + "'>";
-        } else if (languageChoice === "french") {
-          languageChoice = "fr";
-          return htmlTop + languageChoice + "'>";
-        } else if (languageChoice === "italian") {
-          languageChoice = "it";
-          return htmlTop + languageChoice + "'>";
-        } else if (languageChoice === "chinese") {
-          languageChoice = "zh-cn";
-          return htmlTop + languageChoice + "'>";
-        }
-      }; //end choice.language
 
-    choice.charset = function () {
-        //Build meta and the rest of the 'head tag'
+        var languageMap = {
+          "english": "en",
+          "german": "de",
+          "spanish": "es",
+          "french": "fr",
+          "italian": "it",
+          "chinese": "zh-cn"
+        };
+
+        if (languageMap[languageChoice]) {
+          return htmlTop + languageMap[languageChoice] + "'>";
+        } else {
+          return '';
+        }
+      }
+
+      // Private: Creates charset section based on user input
+      function getCharset() {
         var htmlCharset_Beginning = "<meta charset='";
         var htmlCharset_End = "'>" + "<title> -Insert Title- </title>" + "<!-- Insert CSS links below -->" + "</head>" + "<body>";
         var charsetChoice = document.getElementById("charset").value;
@@ -150,52 +104,70 @@ define(function (require, exports, module) {
           charsetChoice = "UTF-16";
           return htmlCharset_Beginning + charsetChoice + htmlCharset_End;
         }
-      }; // end choice.charset
-
-    choice.doctype = function () {
-      var doctypeChoice = document.getElementById("doctype").value;
-      return doctypeChoice;
-    }; // end doctype
-
-    choice.libraries = function () {
-      var checkedBoxes = getCheckedBoxes("lib_checkboxes");
-      var scripts;
-      console.log(checkedBoxes);
-      checkedBoxes.forEach(function(item){
-      scripts += $(item).data('script');
-
-      });//End forEach
-      var bottomHTML = scripts + "</body>" + "</html>";
-      return bottomHTML;
-    }; //End choice.libraries
-
-
-
-
-    //Get checkedBoxes function
-    // Pass the checkbox name to the function
-    function getCheckedBoxes(chkboxName) {
-      var checkboxes = document.getElementsByName(chkboxName);
-      var checkboxesChecked = [];
-      // loop over them all
-      for (var i = 0; i < checkboxes.length; i++) {
-        // And stick the checked ones onto an array...
-        if (checkboxes[i].checked) {
-          checkboxesChecked.push(checkboxes[i]);
-        }
       }
-      // Return the array if it is non-empty, or null
-      return checkboxesChecked.length > 0 ? checkboxesChecked : null;
-    }
 
+      // Private: Creates doctype based on user input
+      function getDoctype() {
+        return document.getElementById("doctype").value;
+      }
 
+      // Private: Adds libraries based on user input
+      function getLibraries() {
+        var checkedBoxes = getCheckedBoxes("lib_checkboxes");
+        checkedBoxes.forEach(function (item) {
+          var scripts = + $(item).data('script');
+          var bottomHTML = scripts + "</body>" + "</html>";
+          return bottomHTML;
+        });
+      }
 
-  // Register the commands and insert in the File menu
-  CommandManager.register(Strings.MENU_COMMAND, 'templates', action);
+      function buildTemplate() {
+        var language = templateBuilder.getLanguage(),
+            charset = templateBuilder.getCharset(),
+            libraries = templateBuilder.getLibraries(),
+            template = language + charset + libraries;
+        console.log(template);
+        EditorManager.getCurrentFullEditor()._codeMirror.setValue(template);
+
+        hideModal();
+      }
+
+      // Here we define what functions are available in the templateBuilder module
+      return {
+        build: buildTemplate
+      };
+    } ();
+
+    function bindEvents() {
+      $('#generate_html_button').on('click', templateBuilder.build);
+    };
+
+    function validateMainUI() {
+      var editor = EditorManager.getCurrentFullEditor();
+
+      if (editor && editor._codeMirror.getValue().length) {
+        $('#templates_warning').show();
+      } else {
+        $('#templates_error').show();
+      }
+    };
+
+    function showModal() {
+      Dialogs.showModalDialogUsingTemplate(Mustache.render(modal, Strings));
+    };
+
+    function hideModal() {
+      $('#templates_modalBtn').click();
+    };
+
+    showModal();
+    validateMainUI();
+    bindEvents();
+  }
+
+  CommandManager.register(Strings.MENU_COMMAND, 'templates', generateHtml);
   var menu = Menus.getMenu(Menus.AppMenuBar.EDIT_MENU);
   menu.addMenuDivider();
   menu.addMenuItem('templates');
 
 }); //end define;
-
-
