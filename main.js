@@ -54,6 +54,14 @@ define(function (require, exports, module) {
   //  var lib_jquery214 = document.getElementById('jquery214').value;
   //  var lib_jquerymobile = document.getElementById('lib_jquerymobile').value;
 
+  //-----------------------------
+
+  //add event listener here
+//  $('#generate_html_button').on('click', templateBuilder.build);
+//this breaks it
+//  document.getElementById("generate_html_button").addEventListener("click", function(){ alert("Hello World!"); });
+
+
   function generateHtml() {
 
     // Template builder is a module that is solely responsible for building templates based on user input.
