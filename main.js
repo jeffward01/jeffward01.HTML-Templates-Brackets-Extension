@@ -144,7 +144,7 @@ define(function (require, exports, module) {
       return {
         build: buildTemplate
       };
-    } ();
+    } (); //End Template Builder
 
     function bindEvents() {
       $('#generate_html_button').on('click', templateBuilder.build);
@@ -171,7 +171,7 @@ define(function (require, exports, module) {
     showModal();
     validateMainUI();
     bindEvents();
-  }
+  } //End Generate HTML
 
   CommandManager.register(Strings.MENU_COMMAND, 'templates', generateHtml);
   var menu = Menus.getMenu(Menus.AppMenuBar.EDIT_MENU);
