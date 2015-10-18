@@ -147,7 +147,7 @@ define(function (require, exports, module) {
     } (); //End Template Builder
 
     function bindEvents() {
-      $('#generate_html_button').on('click', templateBuilder.build);
+      $('#generate_html_btn').on('click', templateBuilder.build);
     };
 
     function validateMainUI() {
