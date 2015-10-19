@@ -64,7 +64,7 @@ define(function(require, exports, module) {
 
             // Private: Creates language section based on user input
             function getLanguageTag() {
-                var htmlTop = "<!DOCTYPE html><html><head lang='";
+                var htmlTop = "<!DOCTYPE html> \n <html> \n <head lang='";
 
                 var languageChoice = document.getElementById("languages").value;
 
@@ -78,7 +78,7 @@ define(function(require, exports, module) {
                 };
 
                 if (languageMap[languageChoice]) {
-                    return htmlTop + languageMap[languageChoice] + "'>";
+                    return htmlTop + languageMap[languageChoice] + "'> \n ";
                 } else {
                     return '';
                 }
@@ -87,7 +87,7 @@ define(function(require, exports, module) {
             // Private: Creates charset section based on user input
             function getCharset() {
                 var htmlCharset_Beginning = "<meta charset='";
-                var htmlCharset_End = "'>" + "<title> -Insert Title- </title>" + "<!-- Insert CSS links below -->" + "</head>" + "<body>";
+                var htmlCharset_End = "'> \n" + "<title> -Insert Title- </title> \n " + "<!-- Insert CSS links below --> \n " + "</head> \n " + "<body> \n";
                 var charsetChoice = document.getElementById("charset").value;
                 if (charsetChoice === "utf8") {
                     charsetChoice = "UTF-8";
@@ -113,7 +113,7 @@ define(function(require, exports, module) {
                     bottomHTML += $(item).data('script');
                 });
 
-                bottomHTML += "</body></html>";
+                bottomHTML += "</body> \n </html>";
 
                 return bottomHTML;
             }
