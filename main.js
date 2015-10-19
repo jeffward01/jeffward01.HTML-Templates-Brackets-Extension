@@ -42,23 +42,6 @@ define(function(require, exports, module) {
     var modal = require('text!html/modal.html'),
         Strings = require('strings');
 
-    //Define Libraries Scripts
-
-    //  var lib_angular = document.getElementById('angularjs').value;
-    //  var lib_angularMaterial = document.getElementById('angularmaterial').value;
-    //  var lib_dojo = document.getElementById('dojo').value;
-    //  var lib_extcore = document.getElementById('extcore').value;
-    //  var lib_jquery111 = document.getElementById('jquery111').value;
-    //  var lib_jquery214 = document.getElementById('jquery214').value;
-    //  var lib_jquerymobile = document.getElementById('lib_jquerymobile').value;
-
-    //-----------------------------
-
-    //add event listener here
-    //  $('#generate_html_button').on('click', templateBuilder.build);
-    //this breaks it
-    //  document.getElementById("generate_html_button").addEventListener("click", function(){ alert("Hello World!"); });
-
 
     function generateHtml() {
 
@@ -76,7 +59,6 @@ define(function(require, exports, module) {
                         checkedBoxes.push(checkboxes[i]);
                     }
                 }
-
                 return checkedBoxes.length > 0 ? checkedBoxes : null;
             }
 
